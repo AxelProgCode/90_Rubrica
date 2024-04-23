@@ -26,13 +26,14 @@ ATTRIBUTI:
 - ‌eta
 
 METODI (per admin):
+- esci
 ‌- visualizza contatti
 ‌- aggiungi contatto
-- ‌elimina contatto
 - ‌cerca contatto
-- ‌visualizza contatti ordinati per cognome AZ
+- ‌elimina contatto
 - ‌visualizza contatti con lo stesso nome
 - ‌visualizza contatti dello stesso genere
+- ‌visualizza contatti ordinati per cognome AZ
 - ‌esporta su file CSV
 - ‌importa su file CSV
 - ‌salva dati
@@ -41,9 +42,10 @@ METODI (per admin):
 - stampa rubrica su file txt
 
 METODI (per utente):
+- esci
 ‌- visualizza contatti
 - ‌cerca contatto
-- ‌visualizza contatti ordinati per cognome AZ
 - ‌visualizza contatti con lo stesso nome
 - ‌visualizza contatti dello stesso genere
+- ‌visualizza contatti ordinati per cognome AZ
 - stampa rubrica su file txt
