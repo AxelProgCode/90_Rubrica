@@ -23,13 +23,14 @@ ATTRIBUTI:
 - ‌telefono
 - ‌mail
 - ‌data di nascita
-- ‌eta
+- ‌eta (calcolata con la data di nascita)
 
 METODI (per admin):
 - esci
 ‌- visualizza contatti
 ‌- aggiungi contatto
 - ‌cerca contatto
+- modifica contatto
 - ‌elimina contatto
 - ‌visualizza contatti con lo stesso nome
 - ‌visualizza contatti dello stesso genere
