@@ -121,7 +121,23 @@ public class Pagina implements Serializable
     }
     
     /**
-     * Libera la posizione "posizione" e restituisce il numero della posizione cnterata
+     * Modifica il contatto in posizione "posizione"
+     * @param posizione
+     * @param nuovoContatto
+     * @throws EccezionePosizioneNonValida
+     * @throws EccezionePosizioneVuota
+     */
+    public void modificaContatto(int posizione, Contatto nuovoContatto) throws EccezionePosizioneNonValida, EccezionePosizioneVuota
+    {
+	if(posizione<0 || posizione>=contatti.length)
+	    throw new EccezionePosizioneNonValida();
+	if(contatti[posizione]==null)
+	    throw new EccezionePosizioneVuota();
+	contatti[posizione]=nuovoContatto;
+    }
+    
+    /**
+     * Libera la posizione "posizione"
      * @param posizione
      */
     public void rimuoviContatto(int posizione) throws EccezionePosizioneNonValida, EccezionePosizioneVuota

@@ -35,22 +35,23 @@ public class App
             String utente=tastiera.readString();
             if(utente.equals("Admin"))
             {
-                int numeroVociMenu=14;
+                int numeroVociMenu=15;
                 String[] vociMenu=new String[numeroVociMenu];
                 vociMenu[0]="0 --> Esci";
                 vociMenu[1]="1 --> Visualizza tutti i contatti della rubrica";
                 vociMenu[2]="2 --> Aggiungi contatto (pagina, posizione)";
                 vociMenu[3]="3 --> Cerca contatto (pagina, posizione)";
-                vociMenu[4]="4 --> Elimina contatto (pagina, posizione)";
-                vociMenu[5]="5 --> Mostra contatti con lo stesso nome (nome)";
-                vociMenu[6]="6 --> Mostra contatti dello stesso genere (genere)";
-                vociMenu[7]="7 --> Mostra elenco contatti ordinati alfabeticamente per cognome (A-Z)";
-                vociMenu[8]="8 --> Esporta contatti su file in formato CSV";
-                vociMenu[9]="9 --> Importa contatti da file in formato CSV";
-                vociMenu[10]="10 --> Salva dati";
-                vociMenu[11]="11 --> Carica dati";
-                vociMenu[12]="12 --> Salva & Esci";
-                vociMenu[13]="13 --> Stampa Rubrica (.txt)";
+		vociMenu[4]="4 --> Modifica contatto (pagina, posizione)";
+                vociMenu[5]="5 --> Elimina contatto (pagina, posizione)";
+                vociMenu[6]="6 --> Mostra contatti con lo stesso nome (nome)";
+                vociMenu[7]="7 --> Mostra contatti dello stesso genere (genere)";
+                vociMenu[8]="8 --> Mostra elenco contatti ordinati alfabeticamente per cognome (A-Z)";
+                vociMenu[9]="9 --> Esporta contatti su file in formato CSV";
+                vociMenu[10]="10 --> Importa contatti da file in formato CSV";
+                vociMenu[11]="11 --> Salva dati";
+                vociMenu[12]="12 --> Carica dati";
+                vociMenu[13]="13 --> Salva & Esci";
+                vociMenu[14]="14 --> Stampa Rubrica (.txt)";
 
                 Menu menu=new Menu(vociMenu);
 
@@ -172,13 +173,58 @@ public class App
                                 System.out.println("Errore: Nessun contatto presente!");
                             }
                             break;
-                        case 4:
+			case 4:
+			    System.out.println("Modifica contatto:");
+			    System.out.print("Pagina (0..9) --> ");
+			    pagina=tastiera.readInt();
+			    System.out.print("Posizione (0..9) --> ");
+			    posizione=tastiera.readInt();
+			    try
+			    {
+				Contatto contattoModificato=r1.getContatto(pagina, posizione);
+				if(contattoModificato!=null)
+				{
+				    System.out.println("Contatto attuale:");
+				    System.out.println(contattoModificato.toString());
+				    System.out.println("Inserisci i nuovi dati:");
+				    System.out.print("Nuovo Cognome --> ");
+				    String nuovoCognome=tastiera.readString();
+				    System.out.print("Nuovo Nome --> ");
+				    String nuovoNome=tastiera.readString();
+				    System.out.print("Nuovo Genere (M/F)--> ");
+				    String nuovoGenere=tastiera.readString();
+				    System.out.print("Nuovo Telefono --> ");
+				    String nuovoTelefono=tastiera.readString();
+				    System.out.print("Nuova Mail --> ");
+				    String nuovaMail=tastiera.readString();
+				    System.out.print("Nuova Data di nascita (AAAA-MM-GG) --> ");
+				    String nuovaDataNascita=tastiera.readString();
+				    contattoModificato.setCognome(nuovoCognome);
+				    contattoModificato.setNome(nuovoNome);
+				    contattoModificato.setGenere(nuovoGenere);
+				    contattoModificato.setTelefono(nuovoTelefono);
+				    contattoModificato.setMail(nuovaMail);
+				    contattoModificato.setDataNascita(nuovaDataNascita);
+				    r1.setContatto(contattoModificato, pagina, posizione);
+				    System.out.println("Contatto modificato con successo!");
+				}
+				else
+				{
+				    System.out.println("Errore: nessun contatto trovato!");
+				}
+			    }
+			    catch(EccezionePaginaNonValida | EccezionePosizioneNonValida | EccezionePosizioneVuota | EccezionePosizioneOccupata e)
+			    {
+				System.out.println("Errore: " + e.toString());
+			    }
+			    break;
+                        case 5:
                             try
                             {
                                 do{
                                     try
                                     {
-                                        System.out.print("Inserisci il pagina del contatto da eliminare (0..9): ");
+                                        System.out.print("Inserisci la pagina del contatto da eliminare (0..9): ");
                                         pagina=tastiera.readInt();
                                         break;
                                     }
@@ -219,7 +265,7 @@ public class App
                                     System.out.println("Errore: posizione già vuota!");
                                 }
                             break;
-                        case 5:
+                        case 6:
                             try
                             {
                                 System.out.print("Inserisci nome: ");
@@ -239,7 +285,7 @@ public class App
                                 System.out.println("Errore: impossibile leggere da tastiera!");
                             }
                             break;
-                        case 6:
+                        case 7:
                             try
                             {
                                 System.out.print("Inserisci genere (M/F): ");
@@ -259,7 +305,7 @@ public class App
                                 System.out.println("Errore: impossibile leggere da tastiera!");
                             }
                             break;
-                        case 7:
+                        case 8:
                             System.out.println("Elenco contatti ordinati per cognome (A-Z):");
                             elencoContattiOrdinatiAlfabeticamente=r1.elencoContattiOrdinatiPerCognomeAZ();
                             for(int i=0;i<elencoContattiOrdinatiAlfabeticamente.length;i++)
@@ -267,7 +313,7 @@ public class App
                                 System.out.println("\n"+elencoContattiOrdinatiAlfabeticamente[i].toString());
                             }
                             break;
-                        case 8:
+                        case 9:
                             try
                             {
                                 f1=new TextFile(nomeFileCSV, 'W');
@@ -303,7 +349,7 @@ public class App
                                 System.out.println("Errore: impossibile accedere al file!");
                             }
                             break;
-                        case 9:
+                        case 10:
                             try
                             {
                                 f1=new TextFile(nomeFileCSV, 'R');
@@ -354,7 +400,7 @@ public class App
                                 System.out.println("Errore: impossibile accedere al file!");
                             }
                             break;
-                        case 10:
+                        case 11:
                             try
                             {
                                 ObjectOutputStream writer=new ObjectOutputStream(new FileOutputStream(nomeFileBIN));
@@ -368,7 +414,7 @@ public class App
                                 System.out.println("Errore: impossibile accedere al file!");
                             }
                             break;
-                        case 11:
+                        case 12:
                             try
                             {
                                 ObjectInputStream reader=new ObjectInputStream(new FileInputStream(nomeFileBIN));
@@ -385,7 +431,7 @@ public class App
                                 System.out.println("Errore: impossibile accedere al file!");
                             }
                             break;
-                        case 12:
+                        case 13:
                             try
                             {
                                 ObjectOutputStream writer=new ObjectOutputStream(new FileOutputStream(nomeFileBIN));
@@ -401,7 +447,7 @@ public class App
                             voceMenuScelta=0;
                             System.out.println("Arrivederci!");
                             break;
-                        case 13:
+                        case 14:
                             try
                             {
                                 f1=new TextFile(nomeFileTXT, 'W');

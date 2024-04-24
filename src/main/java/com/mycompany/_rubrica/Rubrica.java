@@ -99,6 +99,22 @@ public class Rubrica implements Serializable
     }
     
     /**
+     * Modifica il contatto in posizione "posizione"
+     * @param pagina
+     * @param posizione
+     * @param nuovoContatto
+     * @throws EccezionePaginaNonValida
+     * @throws EccezionePosizioneNonValida
+     * @throws EccezionePosizioneVuota
+     */
+    public void modificaContatto(int pagina, int posizione, Contatto nuovoContatto) throws EccezionePaginaNonValida, EccezionePosizioneNonValida, EccezionePosizioneVuota
+    {
+	if(pagina<0 || pagina >= NUM_PAGINE)
+	    throw new EccezionePaginaNonValida();
+	pagine[pagina].modificaContatto(posizione, nuovoContatto);
+    }
+    
+    /**
      * Libera la posizione "posizione" della pagina "pagina"
      * @param pagina
      * @param posizione
