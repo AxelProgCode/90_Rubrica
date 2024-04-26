@@ -27,7 +27,7 @@ public class App
         String nomeFileCSV="Contatti.csv";
 	String nomeFileBIN="Rubrica.bin";
         String nomeFileTXT="Rubrica.txt";
-        int pagina,posizione;
+        int pagina,posizione,eta,idContatto;
         
         try
         {
@@ -184,9 +184,9 @@ public class App
 				Contatto contattoModificato=r1.getContatto(pagina, posizione);
 				if(contattoModificato!=null)
 				{
-				    System.out.println("Contatto attuale:");
+				    System.out.println("Dati contatto attuale:");
 				    System.out.println(contattoModificato.toString());
-				    System.out.println("Inserisci i nuovi dati:");
+				    System.out.println("Inserisci nuovi dati:");
 				    System.out.print("Nuovo Cognome --> ");
 				    String nuovoCognome=tastiera.readString();
 				    System.out.print("Nuovo Nome --> ");
@@ -205,6 +205,7 @@ public class App
 				    contattoModificato.setTelefono(nuovoTelefono);
 				    contattoModificato.setMail(nuovaMail);
 				    contattoModificato.setDataNascita(nuovaDataNascita);
+				    r1.rimuoviContatto(pagina, posizione);
 				    r1.setContatto(contattoModificato, pagina, posizione);
 				    System.out.println("Contatto modificato con successo!");
 				}
@@ -324,7 +325,7 @@ public class App
                                         try
                                         {
                                             cnt=r1.getContatto(i, j);
-                                            datiContatto=i+";"+j+";"+cnt.getCognome()+";"+cnt.getNome()+";"+cnt.getTelefono()+";"+cnt.getMail()+";"+cnt.getDataNascita();
+                                            datiContatto=i+";"+j+";"+cnt.getidContatto()+";"+cnt.getCognome()+";"+cnt.getNome()+";"+cnt.getGenere()+";"+cnt.getTelefono()+";"+cnt.getMail()+";"+cnt.getDataNascita()+";"+cnt.getEta();
                                             f1.toFile(datiContatto);
                                         }
                                         catch(FileException e)
@@ -361,12 +362,14 @@ public class App
                                         String[] datiCnt=rigaLetta.split(";");
                                         pagina=Integer.parseInt(datiCnt[0]);
                                         posizione=Integer.parseInt(datiCnt[1]);
-                                        cognome=datiCnt[2];
-                                        nome=datiCnt[3];
-                                        genere=datiCnt[4];
-                                        telefono=datiCnt[5];
-                                        mail=datiCnt[6];
-                                        dataNascita=datiCnt[7];
+					idContatto=Integer.parseInt(datiCnt[2]);
+                                        cognome=datiCnt[3];
+                                        nome=datiCnt[4];
+                                        genere=datiCnt[5];
+                                        telefono=datiCnt[6];
+                                        mail=datiCnt[7];
+                                        dataNascita=datiCnt[8];
+					eta=Integer.parseInt(datiCnt[9]);
                                         cnt=new Contatto(cognome, nome, genere, telefono, mail, dataNascita);
                                         try
                                         {

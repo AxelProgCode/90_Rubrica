@@ -234,7 +234,7 @@ public class Rubrica implements Serializable
      */
     public String[] elencoContattiNome(String nome)
     {
-    //STEP 1: conto quanti contatti dell'nome "nome" sono presenti
+    //STEP 1: conto quanti contatti col nome "nome" sono presenti
 	int contaContattiNome=0;
 	Contatto cnt;
 	String[] elencoContattiNome;

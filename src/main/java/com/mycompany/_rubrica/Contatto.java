@@ -13,6 +13,8 @@ import java.time.*;
  */
 public class Contatto implements Serializable
 {
+    private int idContatto;
+    private static int nextId=1;
     private String cognome;
     private String nome;
     private String genere;
@@ -31,8 +33,10 @@ public class Contatto implements Serializable
      */
     public Contatto(String cognome, String nome, String genere, String telefono, String mail, String dataNascita)
     {
-	setNome(cognome);
-	setCognome(nome);
+	this.idContatto=nextId;
+	nextId++;
+	setCognome(cognome);
+	setNome(nome);
         setGenere(genere);
 	setTelefono(telefono);
         setMail(mail);
@@ -45,6 +49,7 @@ public class Contatto implements Serializable
      */
     public Contatto(Contatto contatto)
     {
+	this.idContatto=contatto.getidContatto();
 	this.cognome=contatto.getCognome();
 	this.nome=contatto.getNome();
         this.genere=contatto.getGenere();
@@ -78,6 +83,10 @@ public class Contatto implements Serializable
 	this.dataNascita=dataNascita;
     }
 
+    public int getidContatto()
+    {
+	return idContatto;
+    }
     public String getCognome()
     {
 	return cognome;
@@ -126,7 +135,7 @@ public class Contatto implements Serializable
      */
     public String toString()
     {
-	String s="\tCognome: "+getCognome()+"\n\tNome: "+getNome()+"\n\tGenere: "+getGenere()+"\n\tTelefono: "+getTelefono()+"\n\tMail: "+getMail()+"\n\tData di nascita: "+getDataNascita()+"\n\tEtà: "+getEta();
+	String s="\tID: "+getidContatto()+"\n\tCognome: "+getCognome()+"\n\tNome: "+getNome()+"\n\tGenere: "+getGenere()+"\n\tTelefono: "+getTelefono()+"\n\tMail: "+getMail()+"\n\tData di nascita: "+getDataNascita()+"\n\tEtà: "+getEta();
 	return s;
     }
 }

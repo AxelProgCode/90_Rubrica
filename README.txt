@@ -17,6 +17,7 @@ CLASSI:
   - TextFile
 
 ATTRIBUTI:
+- idContatto
 - ‌cognome
 - ‌nome
 - genere
