@@ -206,7 +206,7 @@ public class Rubrica implements Serializable
                     cnt=getContatto(i, j);
                     if(cnt.getGenere().equals(genere))
 		    {
-			elencoContattiGenere[contaContattiGenere]=cnt.getCognome();
+			elencoContattiGenere[contaContattiGenere]=cnt.getCognome()+cnt.getNome();
 			contaContattiGenere++;
 		    }
                 }
