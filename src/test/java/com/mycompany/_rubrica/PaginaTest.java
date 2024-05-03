@@ -4,15 +4,13 @@
  */
 package com.mycompany._rubrica;
 
-import eccezioni.EccezionePosizioneNonValida;
-import eccezioni.EccezionePosizioneOccupata;
-import java.time.LocalDate;
+import eccezioni.*;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author Studente
+ * @author Plona
  */
 public class PaginaTest
 {
@@ -27,12 +25,12 @@ public class PaginaTest
         contatto1 = new Contatto("Rossi", "Mario", "M", "1234567890", "mario.rossi@email.com", "2000-01-01");
         contatto2 = new Contatto("Bianchi", "Luigi", "M", "0987654321", "luigi.bianchi@email.com", "1990-01-01");
 	pagina.setContatto(contatto1, 0);
+	pagina.setContatto(contatto2, 1);
     }
 
     @Test
     public void testSetContatto() throws Exception
     {
-	pagina.setContatto(contatto1, 0);
         assertEquals(contatto1, pagina.getContatto(0));
     }
 
