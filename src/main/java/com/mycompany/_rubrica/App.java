@@ -73,14 +73,42 @@ public class App
                                 cognome=tastiera.readString();
                                 System.out.print("Nome --> ");
                                 nome=tastiera.readString();
-                                System.out.print("Genere (M/F) --> ");
-                                genere=tastiera.readString();
-                                System.out.print("Telefono --> ");
-                                telefono=tastiera.readString();
-                                System.out.print("Mail --> ");
-                                mail=tastiera.readString();
-                                System.out.print("Data di nascita (AAAA-MM-GG) --> ");
-                                dataNascita=tastiera.readString();
+				do{
+				    System.out.print("Genere (M/F) --> ");
+				    genere=tastiera.readString();
+				    String regex="[MF]";
+				    if(genere.matches(regex))
+					break;
+				    else
+					System.out.println("Errore: genere non valido! (M/F)");
+				}while(true);
+                                do{
+				    System.out.print("Telefono --> ");
+				    telefono=tastiera.readString();
+				    String regex = "^[0-9]{10}$";
+				    if(telefono.matches(regex))
+					break;
+				    else
+					System.out.println("Errore: telefono non valido!");
+				}while(true);
+                                do{
+				    System.out.print("Mail --> ");
+				    mail=tastiera.readString();
+				    String regex="^[\\w!#$%&'*+/=?^`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$";
+				    if(mail.matches(regex))
+					break;
+				    else
+					System.out.println("Errore: mail non valida!");
+				}while(true);
+                                do{
+				    System.out.print("Data di nascita (AAAA-MM-GG) --> ");
+				    dataNascita=tastiera.readString();
+				    String regex="\\d{4}-\\d{1,2}-\\d{1,2}";
+				    if(dataNascita.matches(regex))
+					break;
+				    else
+					System.out.println("Errore: data non valida!");
+				}while(true);
                                 do{
                                     try
                                     {
