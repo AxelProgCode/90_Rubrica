@@ -402,19 +402,19 @@ public class App
                                         try
                                         {
                                             r1.setContatto(cnt, pagina, posizione);
-                                            System.out.println("\tContatto "+cognome+" importato!");
+                                            System.out.println("\tContatto "+cognome+nome+" importato!");
                                         }
                                         catch(EccezionePaginaNonValida e)
                                         {
-                                            System.out.println("\tErrore: pagina "+pagina+" non valido per il contatto "+cognome+"!");
+                                            System.out.println("\tErrore: pagina "+pagina+" non valido per il contatto "+cognome+nome+"!");
                                         }
                                         catch(EccezionePosizioneNonValida e)
                                         {
-                                            System.out.println("\tErrore: posizione "+posizione+" non valida per il contatto "+cognome+"!");
+                                            System.out.println("\tErrore: posizione "+posizione+" non valida per il contatto "+cognome+nome+"!");
                                         }
                                         catch(EccezionePosizioneOccupata e)
                                         {
-                                            System.out.println("\tErrore: coordinata ("+pagina+";"+posizione+") occupata! Contatto "+cognome+" non importato!");
+                                            System.out.println("\tErrore: coordinata ("+pagina+";"+posizione+") occupata! Contatto "+cognome+nome+" non importato!");
                                         }
                                     }
                                     catch(FileException e)
