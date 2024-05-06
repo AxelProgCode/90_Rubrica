@@ -17,7 +17,8 @@ public class ContattoTest
     private Contatto contatto;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp()
+    {
         contatto = new Contatto("Rossi", "Mario", "M", "1234567890", "mario.rossi@email.com", "2000-01-01");
     }
 
