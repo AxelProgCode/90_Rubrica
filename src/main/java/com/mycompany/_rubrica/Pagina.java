@@ -129,7 +129,7 @@ public class Pagina implements Serializable
      */
     public void modificaContatto(int posizione, Contatto nuovoContatto) throws EccezionePosizioneNonValida, EccezionePosizioneVuota
     {
-	if(posizione<0 || posizione>=contatti.length)
+	if(posizione<0 || posizione>=NUM_MAX_CONTATTI)
 	    throw new EccezionePosizioneNonValida();
 	if(contatti[posizione]==null)
 	    throw new EccezionePosizioneVuota();
