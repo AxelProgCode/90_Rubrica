@@ -242,9 +242,21 @@ public class App
 				    System.out.println("Errore: nessun contatto trovato!");
 				}
 			    }
-			    catch(EccezionePaginaNonValida | EccezionePosizioneNonValida | EccezionePosizioneVuota | EccezionePosizioneOccupata e)
+			    catch(EccezionePosizioneVuota e)
 			    {
-				System.out.println("Errore: " + e.toString());
+				System.out.println("Errore: posizione vuota!");
+			    }
+			    catch(EccezionePaginaNonValida e)
+			    {
+				System.out.println("Errore: pagina non valida!");
+			    }
+			    catch(EccezionePosizioneNonValida e)
+			    {
+				System.out.println("Errore: posizione non valida!");
+			    }
+			    catch(EccezionePosizioneOccupata e)
+			    {
+				//non succederà mai
 			    }
 			    break;
                         case 5:
