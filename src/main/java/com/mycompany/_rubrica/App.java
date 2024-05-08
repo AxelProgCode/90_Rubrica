@@ -33,7 +33,7 @@ public class App
         {
             System.out.print("Ciao! Chi sei? ");
             String utente=tastiera.readString();
-            if(utente.equals("Admin")) //nome o password amministratore
+            if(utente.equals("Admin")) //nome o password privilegi amministratore
             {
                 int numeroVociMenu=15;
                 String[] vociMenu=new String[numeroVociMenu];
