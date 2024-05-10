@@ -19,7 +19,7 @@ public class App
 	int voceMenuScelta;
 	ConsoleInput tastiera=new ConsoleInput();
 	Rubrica r1=new Rubrica();
-        String cognome,nome,genere,telefono,mail,dataNascita,datiContatto;
+        String cognome,nome,genere,telefono,mail,dataNascita,datiContatto,nuovoGenere,nuovoTelefono,nuovaMail,nuovaDataNascita;
 	String[] elencoContattiNome,elencoContattiGenere;
         Contatto[] elencoContattiOrdinatiAlfabeticamente;
         Contatto cnt;
@@ -103,7 +103,7 @@ public class App
                                 do{
 				    System.out.print("Data di nascita (AAAA-MM-GG) --> ");
 				    dataNascita=tastiera.readString();
-				    String regex="\\d{4}-\\d{1,2}-\\d{1,2}";
+				    String regex="\\d{4}-\\d{2}-\\d{2}";
 				    if(dataNascita.matches(regex))
 					break;
 				    else
@@ -219,14 +219,42 @@ public class App
 				    String nuovoCognome=tastiera.readString();
 				    System.out.print("Nuovo Nome --> ");
 				    String nuovoNome=tastiera.readString();
-				    System.out.print("Nuovo Genere (M/F)--> ");
-				    String nuovoGenere=tastiera.readString();
-				    System.out.print("Nuovo Telefono --> ");
-				    String nuovoTelefono=tastiera.readString();
-				    System.out.print("Nuova Mail --> ");
-				    String nuovaMail=tastiera.readString();
-				    System.out.print("Nuova Data di nascita (AAAA-MM-GG) --> ");
-				    String nuovaDataNascita=tastiera.readString();
+				    do{
+					System.out.print("Nuovo Genere (M/F) --> ");
+					nuovoGenere=tastiera.readString();
+					String regex="[MF]";
+					if(nuovoGenere.matches(regex))
+					    break;
+					else
+					    System.out.println("Errore: genere non valido! (M/F)");
+				    }while(true);
+				    do{
+					System.out.print("Nuovo Telefono --> ");
+					nuovoTelefono=tastiera.readString();
+					String regex = "^[0-9]{10}$";
+					if(nuovoTelefono.matches(regex))
+					    break;
+					else
+					    System.out.println("Errore: telefono non valido!");
+				    }while(true);
+				    do{
+					System.out.print("Nuova Mail --> ");
+					nuovaMail=tastiera.readString();
+					String regex="^[\\w!#$%&'*+/=?^`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$";
+					if(nuovaMail.matches(regex))
+					    break;
+					else
+					    System.out.println("Errore: mail non valida!");
+				    }while(true);
+				    do{
+					System.out.print("Nuova Data di nascita (AAAA-MM-GG) --> ");
+					nuovaDataNascita=tastiera.readString();
+					String regex="\\d{4}-\\d{2}-\\d{2}";
+					if(nuovaDataNascita.matches(regex))
+					    break;
+					else
+					    System.out.println("Errore: data non valida!");
+				    }while(true);
 				    contattoModificato.setCognome(nuovoCognome);
 				    contattoModificato.setNome(nuovoNome);
 				    contattoModificato.setGenere(nuovoGenere);
